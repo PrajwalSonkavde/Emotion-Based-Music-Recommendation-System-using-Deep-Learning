@@ -24,16 +24,22 @@ Tired of generic music recs? We built an AI system that recommends songs based o
 
 ## Methodology
 ![Screenshot 2023-12-24 142936](https://github.com/PrajwalSonkavde/Emotion-Based-Music-Recommendation-System-using-Deep-Learning/assets/99462259/1d13d3d7-e32f-42bf-9b6f-fba2b76ff5fd)
+<br>
+<br>
 
 
 
 ## Model Architecture
 ![Screenshot 2023-12-24 142907](https://github.com/PrajwalSonkavde/Emotion-Based-Music-Recommendation-System-using-Deep-Learning/assets/99462259/f78c4785-e297-4d33-9cff-68c0b891068e)
+<br>
+<br>
 
 
 
 ## Predictions
 ![Screenshot 2023-12-24 143142](https://github.com/PrajwalSonkavde/Emotion-Based-Music-Recommendation-System-using-Deep-Learning/assets/99462259/a05f7d09-7469-4b29-9f34-bc2975abaa97)
+<br>
+<br>
 
 
 
