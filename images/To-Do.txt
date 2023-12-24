@@ -1,0 +1,5 @@
+Step 1 : Download dataset from below link and move the files named "train" and "test" in this folder
+
+https://www.kaggle.com/datasets/ananthu017/emotion-detection-fer
+
+Step 2: Run the jupyter notebook file "Data_Preprocessing"
