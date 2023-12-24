@@ -1,0 +1,3 @@
+Step 1 : Run the file "Data_Preprocessing.ypnb"
+          Note : First Dataset Should be Downloaded in it's Respective Directory
+Step 2 : Once Model is Trained and tested and the model file's will appear in this folder
