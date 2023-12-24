@@ -33,6 +33,8 @@ Tired of generic music recs? We built an AI system that recommends songs based o
 
 
 ## Predictions
+![Screenshot 2023-12-24 143142](https://github.com/PrajwalSonkavde/Emotion-Based-Music-Recommendation-System-using-Deep-Learning/assets/99462259/a05f7d09-7469-4b29-9f34-bc2975abaa97)
+
 
 
 
