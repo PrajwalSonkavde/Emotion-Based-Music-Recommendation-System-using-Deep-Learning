@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vibeify</title>
+    <style>
+        video {
+            max-width: 100%;
+        }
+        body {
+            margin: 0 auto;
+            text-align: center;
+            background-color: #d3d3d3;
+            font-family: sans-serif;
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            color: #000;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #000;
+        }
+
+        a {
+            color: #00f;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #f00;
+        }
+
+        .button {
+            background-color: #00f;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="head1">Let the Music Move You</h1>
+
+    <label for="languageSelect">Select Language:</label>
+    <select id="languageSelect" onchange="updateSelectedLanguage()">
+        <option value="hindi">Hindi</option>
+        <option value="english">English</option>
+        <option value="tamil">Tamil</option>
+        <option value="telagu">Telagu</option>
+        <option value="marathi">Marathi</option>
+    </select>
+
+    <video id="webcam" autoplay></video>
+    <button id="capture">Capture Photo</button>
+    <canvas id="photo" style="display: none;"></canvas>
+    <a id="download-link" style="display: none;">Download Photo</a>
+    <h3 id="updated-value">Your Mood is {{ pred_label}}</h3>
+    <audio id="music-player" controls autoplay>
+        <source src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+
+
+    var selectedLanguage="hindi";
+        function updateSelectedLanguage() {
+            var languageSelect = document.getElementById('languageSelect');
+            selectedLanguage = languageSelect.options[languageSelect.selectedIndex].value;
+            console.log('Selected Language:', selectedLanguage);
+        }
+        //update variable
+        function updatePredLabel() {
+        var predLabelElement = document.getElementById('updated-value');
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                predLabelElement.textContent = xhr.responseText;
+            }
+        };
+            xhr.open('GET', '/get_pred_label');  // Replace with your Flask route
+            xhr.send();
+        }
+        setInterval(updatePredLabel, 1000);  // Update every 12 seconds
+        updatePredLabel();  // Update immediately on page load
+        //updated function end
+
+        const video = document.getElementById('webcam');
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                video.srcObject = stream;
+            })
+            .catch((error) => {
+                console.error('Error accessing the webcam:', error);
+            });
+
+        const captureButton = document.getElementById('capture');
+        const photoCanvas = document.getElementById('photo');
+        const downloadLink = document.getElementById('download-link');
+
+        function captureAndDownload() {
+            const context = photoCanvas.getContext('2d');
+            photoCanvas.width = video.videoWidth;
+            photoCanvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
+
+            photoCanvas.style.display = 'none';
+            downloadLink.style.display = 'block';
+            downloadLink.href = photoCanvas.toDataURL('image/jpeg');
+            downloadLink.download = 'sc.jpg';
+            downloadLink.click();
+        }
+
+        setInterval(captureAndDownload, 5000);
+        captureButton.addEventListener('click', captureAndDownload);
+
+       const musicPlayer = document.getElementById('music-player');
+const musicSource = musicPlayer.getElementsByTagName('source')[0];
+const songsFolders = {
+    'angry': 'angry',
+    'disgust': 'disgust',
+    'fear': 'fear',
+    'happy': 'happy',
+    'neutral': 'neutral',
+    'sad': 'sad',
+    'surprise': 'surprise',
+};
+const songs = ['song1.mp3', 'song2.mp3'];
+
+let currentSongIndex = 0;
+var previousPredLabel = "fear";
+var current_mood = "fear";
+var previouslanguage="hindi";
+var check=0;
+
+function updatePredLabelforsong() {
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      current_mood = JSON.parse(xhr.responseText);
+<!--      document.getElementById('head1').textContent = "Current Mood: " + "{{ url_for('static', filename='') }}" + current_mood+'/'+selectedLanguage + '/'+songs[0];-->
+    }
+  };
+  xhr.open('GET', '/update_pred_label_for_song');  // Replace with your Flask route
+  xhr.send();
+}
+setInterval(updatePredLabelforsong, 1000);  // Update every 12 seconds
+updatePredLabelforsong();
+
+        function playNextSong() {
+            const folderPath = songsFolders[current_mood];
+             // Add more songs as needed for each mood
+            if(check === 0){
+                musicSource.src = "{{ url_for('static', filename='') }}" + current_mood+'/'+selectedLanguage + '/'+songs[currentSongIndex];
+                musicPlayer.load();
+                musicPlayer.play();
+                check=1;
+            }
+            if (previousPredLabel !== current_mood || previouslanguage !== selectedLanguage) {
+                previousPredLabel = current_mood;
+                previouslanguage=selectedLanguage;
+<!--                document.getElementById('head1').textContent = "Current Mood: " + "{{ url_for('static', filename='') }}" + current_mood+'/'+songs[0];-->
+                currentSongIndex = 0;
+                musicSource.src ="{{ url_for('static', filename='') }}" + current_mood+'/'+selectedLanguage + '/'+songs[currentSongIndex];
+<!--                musicSource.src = "{{ url_for('static', filename='') }}" + current_mood + '/' + songs[currentSongIndex];-->
+                musicPlayer.load();
+                musicPlayer.play();
+            }else{
+                if (musicPlayer.currentTime === musicPlayer.duration) {
+                    currentSongIndex = (currentSongIndex + 1) % songs.length;
+                    musicSource.src ="{{ url_for('static', filename='') }}" + current_mood+'/'+selectedLanguage + '/'+songs[currentSongIndex];
+<!--                    musicSource.src = "{{ url_for('static', filename='') }}" + current_mood + '/' + songs[currentSongIndex];-->
+                    musicPlayer.load();
+                    musicPlayer.play();
+                }
+            }
+        }
+
+        playNextSong();
+        setInterval(playNextSong, 000);
+        musicPlayer.addEventListener('ended', playNextSong);
+
+    </script>
+</body>
+</html>
