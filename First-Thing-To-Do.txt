@@ -1,0 +1,2 @@
+Step 1 : Navigate to the "images" Directory and open the "To-Do.txt" file. Follow the steps outlined within the file.
+Step 2 : Navigate to the "model_and_its_detail" Directory and open the "To-Do.txt" file. Follow the steps outlined within the file.
