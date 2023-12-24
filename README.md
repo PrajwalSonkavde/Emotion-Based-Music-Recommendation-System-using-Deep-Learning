@@ -22,7 +22,7 @@ Tired of generic music recs? We built an AI system that recommends songs based o
 10.	Optimization for Accuracy : Fine-tune the model , user interface and add other techniques to optimize for accurate emotion prediction.
 11.	Results : Analyze and interpret the results, ensuring the system provides reliable and effective emotion predictions in real-time.
 
-## Methodology
+<center> ## Methodology </center>
 ![Screenshot 2023-12-24 142936](https://github.com/PrajwalSonkavde/Emotion-Based-Music-Recommendation-System-using-Deep-Learning/assets/99462259/1d13d3d7-e32f-42bf-9b6f-fba2b76ff5fd)
 <br>
 <br>
