@@ -45,7 +45,8 @@ Tired of generic music recs? We built an AI system that recommends songs based o
 
 
 ## User Interface
-![Screenshot 2023-12-24 143154](https://github.com/PrajwalSonkavde/Emotion-Based-Music-Recommendation-System-using-Deep-Learning/assets/99462259/ba90ecc5-9c6b-4cd3-ae6e-7092831f4ab7)
+![Picture](https://github.com/PrajwalSonkavde/Vibeify-Emotion-Based-Music-Recommendation-System-using-Deep-Learning-/assets/99462259/d28b4a48-1c58-44a1-a5e4-9c5f612c2def)
+
 
 
 
