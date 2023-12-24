@@ -23,6 +23,9 @@ Tired of generic music recs? We built an AI system that recommends songs based o
 11.	Results : Analyze and interpret the results, ensuring the system provides reliable and effective emotion predictions in real-time.
 
 ## Methodology
+![Screenshot 2023-12-24 142936](https://github.com/PrajwalSonkavde/Emotion-Based-Music-Recommendation-System-using-Deep-Learning/assets/99462259/1d13d3d7-e32f-42bf-9b6f-fba2b76ff5fd)
+
+
 
 ## Model Architecture
 ![Screenshot 2023-12-24 142907](https://github.com/PrajwalSonkavde/Emotion-Based-Music-Recommendation-System-using-Deep-Learning/assets/99462259/f78c4785-e297-4d33-9cff-68c0b891068e)
@@ -31,7 +34,11 @@ Tired of generic music recs? We built an AI system that recommends songs based o
 
 ## Predictions
 
+
+
 ## User Interface
+![Screenshot 2023-12-24 143154](https://github.com/PrajwalSonkavde/Emotion-Based-Music-Recommendation-System-using-Deep-Learning/assets/99462259/ba90ecc5-9c6b-4cd3-ae6e-7092831f4ab7)
+
 
 
 
